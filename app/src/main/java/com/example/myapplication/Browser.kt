@@ -1,16 +1,15 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.myapplication.databinding.FinishedBinding
+import androidx.fragment.app.Fragment
+import com.example.myapplication.databinding.BrowserBinding
 
-class Finished : Fragment() {
+class Browser : Fragment() {
 
-    private var _binding: FinishedBinding? = null
+    private var _binding: BrowserBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +18,7 @@ class Finished : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FinishedBinding.inflate(inflater, container, false)
+        _binding = BrowserBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -31,4 +30,5 @@ class Finished : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
