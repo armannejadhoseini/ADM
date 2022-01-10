@@ -6,17 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.myapplication.databinding.FragmentFirstBinding
+import com.example.myapplication.databinding.DownloadQueueBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class DownloadQueue : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: DownloadQueueBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,7 +18,7 @@ class DownloadQueue : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = DownloadQueueBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -33,7 +27,7 @@ class DownloadQueue : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_DownloadQueue_to_Finished)
         }
     }
 

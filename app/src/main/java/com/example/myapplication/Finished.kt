@@ -6,17 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.myapplication.databinding.FragmentSecondBinding
+import com.example.myapplication.databinding.FinishedBinding
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class Finished : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FinishedBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,7 +18,7 @@ class Finished : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FinishedBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -33,7 +27,7 @@ class Finished : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_Finished_to_DownloadQueue)
         }
     }
 
