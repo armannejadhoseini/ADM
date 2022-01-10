@@ -30,70 +30,17 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_baseline_add_24"
-            app:tint="@color/white"
-            app:fabSize="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:backgroundTint="@color/canary"
-            android:src="@drawable/ic_baseline_public_24"
-            android:visibility="invisible"
-            app:borderWidth="0dp"
-            app:tint="@color/cadet"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
-            app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
-            app:layout_constraintStart_toStartOf="@+id/floatingActionButton" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:backgroundTint="@color/canary"
-            android:src="@drawable/ic_baseline_link_24"
-            android:tint="@color/white"
-            android:visibility="invisible"
-            app:borderWidth="0dp"
-            app:tint="@color/cadet"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toTopOf="@+id/fab1"
-            app:layout_constraintEnd_toEndOf="@+id/fab1"
-            app:layout_constraintStart_toStartOf="@+id/fab1" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_Layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabSelectedTextColor="@color/red"
-            app:tabTextColor="@color/salmon"
-            app:tabIndicatorColor="@color/red"
-            app:tabRippleColor="@color/red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_Pager"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tab_Layout"
-            tools:layout_editor_absoluteX="2dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

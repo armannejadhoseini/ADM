@@ -3,26 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/DownloadQueue">
+    app:startDestination="@id/Start">
 
     <fragment
-        android:id="@+id/DownloadQueue"
-        android:name="com.example.myapplication.DownloadQueue"
-        android:label="DownloadQueue"
-        tools:layout="@layout/download_queue">
+        android:id="@+id/Start"
+        android:name="com.example.myapplication.Start"
+        android:label="Start"
+        tools:layout="@layout/fragment_start">
 
         <action
-            android:id="@+id/action_DownloadQueue_to_Finished"
-            app:destination="@id/Finished" />
+            android:id="@+id/action_to_browser"
+            app:destination="@id/Browser" />
+        <action
+            android:id="@+id/action_to_Link"
+            app:destination="@id/Link" />
+
     </fragment>
+
     <fragment
-        android:id="@+id/Finished"
-        android:name="com.example.myapplication.Finished"
-        android:label="Finished"
-        tools:layout="@layout/finished">
+        android:id="@+id/Browser"
+        android:name="com.example.myapplication.Browser"
+        android:label="Browser"
+        tools:layout="@layout/browser">
 
-        <action
-            android:id="@+id/action_Finished_to_DownloadQueue"
-            app:destination="@id/DownloadQueue" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/Link"
+        android:name="com.example.myapplication.Link"
+        android:label="Link"
+        tools:layout="@layout/link">
+
+
+    </fragment>
+
+
 </navigation>
