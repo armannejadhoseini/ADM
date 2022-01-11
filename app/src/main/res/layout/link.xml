@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center">
 
     <TextView
@@ -13,14 +13,16 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/link"
-        android:textColor="@color/cadet"
+        android:textColor="@color/salmon"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:layout_marginEnd="30dp"
         android:id="@+id/editText"
+        android:layout_marginStart="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -39,13 +41,15 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/file_name"
-        android:textColor="@color/cadet"
+        android:textColor="@color/salmon"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,6 +61,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="@color/red"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText2">
+
+        <TextView
+            android:textSize="24sp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:id="@+id/tv_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Download"
+            android:textColor="@color/white" />
+
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
