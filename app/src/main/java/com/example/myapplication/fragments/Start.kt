@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import android.graphics.drawable.Icon
 import android.os.Build
@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentStartBinding
 import com.google.android.material.tabs.TabLayoutMediator
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/Start"
-        android:name="com.example.myapplication.Start"
+        android:name="com.example.myapplication.fragments.Start"
         android:label="Start"
         tools:layout="@layout/fragment_start">
 
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/Browser"
-        android:name="com.example.myapplication.Browser"
+        android:name="com.example.myapplication.fragments.Browser"
         android:label="Browser"
         tools:layout="@layout/browser">
 
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/Link"
-        android:name="com.example.myapplication.Link"
+        android:name="com.example.myapplication.fragments.Link"
         android:label="Link"
         tools:layout="@layout/link">
 
