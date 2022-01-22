@@ -3,8 +3,6 @@ package com.example.myapplication.viewModels
 import android.content.Context
 import android.net.Uri
 import android.os.Build
-import android.util.Log
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,9 +11,9 @@ import com.example.domain.usecase.downloadImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
-import java.time.LocalDateTime
 import java.util.*
 import javax.inject.Inject
+
 
 @HiltViewModel
 class LinkViewModel @Inject constructor(
@@ -50,5 +48,4 @@ class LinkViewModel @Inject constructor(
     fun setUrl(url: String) {
         _url.value = url
     }
-
 }

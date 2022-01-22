@@ -28,16 +28,11 @@ class downloadRepoImpl @Inject constructor(
 
         //location of the download
         val dir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!
-        val format = getFileFormat(downloadFile.url)
-        val file = File(dir.absolutePath + "/" + downloadFile.fileName + "." + format)
+        val file = File(dir.absolutePath + "/" + downloadFile.fileName)
         request.setDestinationUri(file.toUri())
 
         //start
         downloadManager.enqueue(request)
 
-    }
-
-    fun getFileFormat(url: String): String {
-        return url.substringAfterLast(".", "")
     }
 }
