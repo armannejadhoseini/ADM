@@ -9,6 +9,7 @@ import com.example.domain.model.downloadFile
 import com.example.domain.usecase.downloadImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDateTime
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,9 +28,17 @@ class LinkViewModel @Inject constructor(
     suspend fun download() {
         Log.d("TAG", ": started")
 
-        val time = LocalDateTime.now().toString()
-        var downloadFile = downloadFile(fileName.value!!, url.value!!, time)
+        time = Calendar.getInstance().time.toString()
+        val downloadFile = downloadFile(fileName.value!!, url.value!!, time)
         downloadImpl.download(downloadFile)
+    }
+
+    fun setFileName(fileName: String) {
+        _fileName.value = fileName
+    }
+
+    fun setUrl(url: String) {
+        _url.value = url
     }
 
 }
