@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -39,8 +40,14 @@ class Link: Fragment() {
 
         //download the file on btn click
         binding.btnDownload.setOnClickListener {
+            //set url and files name
             viewModel.setUrl(binding.editText.text.toString())
             viewModel.setFileName(binding.editText2.text.toString())
+
+            //display a staring message
+            Toast.makeText(context, "Started Downloading", Toast.LENGTH_SHORT).show()
+
+            //start downloading
             GlobalScope.launch(Dispatchers.IO) {
                 viewModel.download()
             }
