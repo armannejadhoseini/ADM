@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.core.net.toUri
 import com.example.domain.model.downloadFile
 import com.example.domain.repository.downloadRepo
+import com.tonyodev.fetch2.*
+import com.tonyodev.fetch2core.Func
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
@@ -32,6 +34,7 @@ class downloadRepoImpl @Inject constructor(
 
         //start
         downloadManager.enqueue(request)
+
     }
 
     fun getFileFormat(url: String): String {

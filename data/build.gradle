@@ -50,4 +50,8 @@ dependencies {
     //room
     implementation "androidx.room:room-runtime:2.4.0"
     annotationProcessor "androidx.room:room-compiler:2.4.0"
+
+    //download library
+    implementation "androidx.tonyodev.fetch2:xfetch2:3.1.6"
+
 }

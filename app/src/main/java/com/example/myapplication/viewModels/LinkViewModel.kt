@@ -1,6 +1,7 @@
 package com.example.myapplication.viewModels
 
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.example.domain.model.downloadFile
 import com.example.domain.usecase.downloadImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.File
 import java.time.LocalDateTime
 import java.util.*
 import javax.inject.Inject
@@ -39,8 +41,10 @@ class LinkViewModel @Inject constructor(
 
     }
 
-    fun setFileName(fileName: String) {
-        _fileName.value = fileName
+    fun setFileName(): String {
+        val uri = Uri.parse(url.value)
+        _fileName.value = File(uri.path).name
+        return fileName.value!!
     }
 
     fun setUrl(url: String) {
