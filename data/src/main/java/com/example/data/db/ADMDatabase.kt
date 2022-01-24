@@ -6,8 +6,8 @@ import com.example.data.dao.LogDao
 import com.example.data.entity.DownloadEntity
 
 @Database(
-    entities = arrayOf(DownloadEntity::class),
-    version = 1
+    entities = [DownloadEntity::class],
+    version = 2
 )
 abstract class ADMDatabase: RoomDatabase() {
     abstract fun logDao(): LogDao

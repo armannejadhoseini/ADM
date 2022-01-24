@@ -18,11 +18,11 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class Link: Fragment() {
+class Link : Fragment() {
 
     private var _binding: LinkBinding? = null
     private val binding get() = _binding!!
-    private val viewModel : LinkViewModel by viewModels()
+    private val viewModel: LinkViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -40,21 +40,26 @@ class Link: Fragment() {
 
         //download the file on btn click
         binding.btnDownload.setOnClickListener {
-            //set url and files name
-            viewModel.setUrl(binding.editText.text.toString())
 
-            //set mime type of downloading file
-            viewModel.setMimeType(binding.editText.text.toString())
+            //check if the input url is valid
+            if (binding.editText.text.toString().isNotEmpty()) {
 
-            //get the files name and fill it automatically
-            binding.editText2.setText(viewModel.setFileName())
+                //set url and files name
+                viewModel.setUrl(binding.editText.text.toString())
 
-            //display a staring message
-            Toast.makeText(context, "Started Downloading", Toast.LENGTH_SHORT).show()
+                //set mime type of downloading file
+                viewModel.setMimeType(binding.editText.text.toString())
 
-            //start downloading
-            GlobalScope.launch(Dispatchers.IO) {
-                viewModel.download()
+                //get the files name and fill it automatically
+                binding.editText2.setText(viewModel.setFileName())
+
+                //display a staring message
+                Toast.makeText(context, "Started Downloading", Toast.LENGTH_SHORT).show()
+
+                //start downloading
+                GlobalScope.launch(Dispatchers.IO) {
+                    viewModel.download()
+                }
             }
         }
 

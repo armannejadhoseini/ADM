@@ -57,9 +57,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/red"
-            app:tabRippleColor="@color/red"
-            app:tabSelectedTextColor="@color/red"
+            android:background="@color/red"
+            app:tabIndicatorColor="@color/white"
+            app:tabRippleColor="@color/salmon"
+            app:tabSelectedTextColor="@color/white"
             app:tabTextColor="@color/salmon" />
 
         <androidx.viewpager2.widget.ViewPager2

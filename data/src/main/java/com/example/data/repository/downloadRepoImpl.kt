@@ -23,8 +23,6 @@ class downloadRepoImpl @Inject constructor(
     ): downloadRepo {
     override suspend fun DownloadFile(downloadFile: downloadFile) {
 
-
-
         //get the download manager instance and make a request
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val uri: Uri = Uri.parse(downloadFile.url)
@@ -40,9 +38,6 @@ class downloadRepoImpl @Inject constructor(
 
         //start
         downloadManager.enqueue(request)
-
-
-
     }
 
     override suspend fun addToDb(downloadLog: DownloadLog) {

@@ -6,9 +6,7 @@ import com.example.domain.model.downloadFile
 import dagger.hilt.EntryPoint
 import javax.inject.Inject
 
-@EntryPoint
 class downloadEntityMapper @Inject constructor (
-
 ) {
     fun logToEntity(downloadLog: DownloadLog): DownloadEntity {
         return downloadLog.let {
