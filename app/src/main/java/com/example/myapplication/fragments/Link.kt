@@ -1,9 +1,7 @@
 package com.example.myapplication.fragments
 
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.io.File
-import java.net.URI
+
 
 @AndroidEntryPoint
 class Link: Fragment() {
@@ -32,7 +29,7 @@ class Link: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = LinkBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,6 +42,9 @@ class Link: Fragment() {
         binding.btnDownload.setOnClickListener {
             //set url and files name
             viewModel.setUrl(binding.editText.text.toString())
+
+            //set mime type of downloading file
+            viewModel.setMimeType(binding.editText.text.toString())
 
             //get the files name and fill it automatically
             binding.editText2.setText(viewModel.setFileName())

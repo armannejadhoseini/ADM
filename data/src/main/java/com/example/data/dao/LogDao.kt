@@ -1,19 +1,19 @@
 package com.example.data.dao
 
 import androidx.room.*
-import com.example.data.entity.DownloadLog
+import com.example.data.entity.DownloadEntity
 
 @Dao
 interface LogDao {
     @Insert
-    fun insertLog(log: DownloadLog)
+    fun insertLog(entity: DownloadEntity)
 
     @Delete
-    fun deleteLog(log: DownloadLog)
+    fun deleteLog(entity: DownloadEntity)
 
     @Update()
-    fun updateLog(log: DownloadLog)
+    fun updateLog(entity: DownloadEntity)
 
     @Query("SELECT * FROM download")
-    fun getLogs(): List<DownloadLog>
+    fun getLogs(): List<DownloadEntity>
 }

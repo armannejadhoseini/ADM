@@ -4,20 +4,27 @@ import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
-import android.widget.Toast
 import androidx.core.net.toUri
+import com.example.data.dao.LogDao
+import com.example.data.db.ADMDatabase
+import com.example.data.mapper.downloadEntityMapper
+import com.example.domain.model.DownloadLog
 import com.example.domain.model.downloadFile
 import com.example.domain.repository.downloadRepo
-import com.tonyodev.fetch2.*
-import com.tonyodev.fetch2core.Func
+import com.example.domain.usecase.addToQueueImpl
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
 
 class downloadRepoImpl @Inject constructor(
     @ApplicationContext val context: Context,
-): downloadRepo {
+    val dao: LogDao,
+    val downloadEntityMapper: downloadEntityMapper
+    ): downloadRepo {
     override suspend fun DownloadFile(downloadFile: downloadFile) {
+
+
+
         //get the download manager instance and make a request
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val uri: Uri = Uri.parse(downloadFile.url)
@@ -34,5 +41,17 @@ class downloadRepoImpl @Inject constructor(
         //start
         downloadManager.enqueue(request)
 
+
+
     }
+
+    override suspend fun addToDb(downloadLog: DownloadLog) {
+        //map data
+        val downloadEntity = downloadEntityMapper.logToEntity(downloadLog)
+
+        //add to database
+        dao.insertLog(downloadEntity)
+    }
+
+
 }

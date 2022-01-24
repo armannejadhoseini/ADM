@@ -4,10 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "download")
-data class DownloadLog (
+data class DownloadEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     var fileName: String,
     var url: String,
-    var time: String
+    var time: String,
+    var mimeType: String,
+    var statusIsFinished: Boolean = false
         )
