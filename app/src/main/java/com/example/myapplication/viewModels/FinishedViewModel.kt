@@ -23,7 +23,7 @@ class FinishedViewModel @Inject constructor(
     init {
         //get logs from db
         viewModelScope.launch(Dispatchers.IO) {
-            _log.postValue(dao.getLogs())
+            _log.postValue(dao.getQueueFiles(true))
         }
     }
 

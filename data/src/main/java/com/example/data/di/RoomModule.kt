@@ -21,7 +21,7 @@ class RoomModule {
             context,
             ADMDatabase::class.java,
             "adm_db"
-        ).fallbackToDestructiveMigrationOnDowngrade().build()
+        ).fallbackToDestructiveMigration().build()
 
     }
 

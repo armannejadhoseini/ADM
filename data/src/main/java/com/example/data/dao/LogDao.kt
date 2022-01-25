@@ -16,4 +16,7 @@ interface LogDao {
 
     @Query("SELECT * FROM download")
     fun getLogs(): List<DownloadEntity>
+
+    @Query("SELECT * FROM download WHERE statusIsFinished = (:isFinished)")
+    fun getQueueFiles(isFinished: Boolean): List<DownloadEntity>
 }

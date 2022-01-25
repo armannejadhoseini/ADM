@@ -15,7 +15,22 @@ class downloadEntityMapper @Inject constructor (
                 it.fileName,
                 it.url,
                 it.time,
-                it.mimeType
+                it.mimeType,
+                it.progress
+            )
+        }
+    }
+
+    fun entityToLog(downloadEntity: DownloadEntity): DownloadLog {
+        return downloadEntity.let {
+            DownloadLog(
+                0,
+                it.fileName,
+                it.url,
+                it.time,
+                it.mimeType,
+                it.progress,
+                true
             )
         }
     }

@@ -20,7 +20,7 @@
         android:layout_marginStart="20dp"
         android:text="@string/file_name"
         android:textColor="@color/cadet"
-        android:textSize="20dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_download"
         app:layout_constraintStart_toEndOf="@id/iv_download"
         app:layout_constraintTop_toTopOf="@id/iv_download" />
@@ -29,6 +29,7 @@
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:progress="100"
         android:layout_marginHorizontal="4dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"

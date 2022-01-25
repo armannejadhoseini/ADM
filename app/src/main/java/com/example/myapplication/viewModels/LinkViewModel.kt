@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.DownloadLog
 import com.example.domain.model.downloadFile
-import com.example.domain.usecase.addToQueueImpl
+import com.example.domain.usecase.dbToQueueImpl
 import com.example.domain.usecase.downloadImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LinkViewModel @Inject constructor(
     val downloadImpl: downloadImpl,
-    val addToQueueImpl: addToQueueImpl
+    val dbToQueueImpl: dbToQueueImpl
 ) : ViewModel() {
     private var _url = MutableLiveData<String>()
     val url get() = _url
@@ -43,21 +43,21 @@ class LinkViewModel @Inject constructor(
 
         //call the usecase to add the download to queue
         viewModelScope.launch(Dispatchers.IO) {
-            addToQueueImpl.add(
+            dbToQueueImpl.add(
                 //make a log
                 DownloadLog(
                     0,
                     downloadFile.fileName,
                     downloadFile.url,
                     downloadFile.time,
-                    downloadFile.mimeType
+                    downloadFile.mimeType,
+                    downloadFile.progress
                 )
             )
         }
 
         //call the download usecase
         downloadImpl.download(downloadFile)
-
     }
 
     //setters

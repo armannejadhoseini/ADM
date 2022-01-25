@@ -6,4 +6,5 @@ import com.example.domain.model.downloadFile
 interface downloadRepo {
     suspend fun DownloadFile(downloadFile: downloadFile)
     suspend fun addToDb(downloadLog: DownloadLog)
+    suspend fun updateDb(downloadLog: DownloadLog)
 }

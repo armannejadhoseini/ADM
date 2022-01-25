@@ -13,11 +13,11 @@ class FinishedRecyclerView(
     private lateinit var binding: DownloadItemBinding
 
     inner class viewHolder(binding: DownloadItemBinding) : RecyclerView.ViewHolder(binding.root) {
-            val fileName: TextView
+        val fileName: TextView
 
-            init {
-                fileName = binding.downloadName
-            }
+        init {
+            fileName = binding.downloadName
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -26,7 +26,11 @@ class FinishedRecyclerView(
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        holder.fileName.text = downloadEntity[position].fileName
+        var text = downloadEntity[position].fileName
+        if (text.length > 20) {
+            text = text.substring(0, 20)
+        }
+        holder.fileName.text = text
     }
 
     override fun getItemCount(): Int {

@@ -4,10 +4,14 @@ import com.example.domain.model.DownloadLog
 import com.example.domain.repository.downloadRepo
 import javax.inject.Inject
 
-class addToQueueImpl @Inject constructor(
+class dbToQueueImpl @Inject constructor(
     val downloadRepo: downloadRepo
-): addToQueue {
+): dbToQueue {
     override suspend fun add(downloadLog: DownloadLog) {
         downloadRepo.addToDb(downloadLog)
+    }
+
+    override suspend fun update(downloadLog: DownloadLog) {
+        downloadRepo.updateDb(downloadLog)
     }
 }
