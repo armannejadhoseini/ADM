@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.DownloadLog
-import com.example.domain.model.downloadFile
 import com.example.domain.usecase.dbToQueueImpl
 import com.example.domain.usecase.downloadImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +23,7 @@ class LinkViewModel @Inject constructor(
     val downloadImpl: downloadImpl,
     val dbToQueueImpl: dbToQueueImpl
 ) : ViewModel() {
+
     private var _url = MutableLiveData<String>()
     val url get() = _url
 
@@ -39,25 +39,19 @@ class LinkViewModel @Inject constructor(
     suspend fun download() {
         //get the current time
         time = Calendar.getInstance().time.toString()
-        val downloadFile = downloadFile(fileName.value!!, url.value!!, time, mimeType.value!!)
+        //make a log
+        val downloadLog = DownloadLog(fileName.value!!, url.value!!, time, mimeType.value!!, 0, false)
+
+        //call the download usecase
+        val downloadId = downloadImpl.download(downloadLog)
+
+        //update download log with new downloadId
+        downloadLog.downloadId = downloadId
 
         //call the usecase to add the download to queue
         viewModelScope.launch(Dispatchers.IO) {
-            dbToQueueImpl.add(
-                //make a log
-                DownloadLog(
-                    0,
-                    downloadFile.fileName,
-                    downloadFile.url,
-                    downloadFile.time,
-                    downloadFile.mimeType,
-                    downloadFile.progress
-                )
-            )
+            dbToQueueImpl.add(downloadLog)
         }
-
-        //call the download usecase
-        downloadImpl.download(downloadFile)
     }
 
     //setters

@@ -9,7 +9,6 @@ import androidx.core.net.toUri
 import com.example.data.dao.LogDao
 import com.example.data.mapper.downloadEntityMapper
 import com.example.domain.model.DownloadLog
-import com.example.domain.model.downloadFile
 import com.example.domain.repository.downloadRepo
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -23,22 +22,23 @@ class downloadRepoImpl @Inject constructor(
     val downloadManager: DownloadManager
 ) : downloadRepo {
     @SuppressLint("Range")
-    override suspend fun DownloadFile(downloadFile: downloadFile) {
+    override suspend fun DownloadFile(downloadLog: DownloadLog): Long {
 
         //get the download manager instance and make a request
-        val uri: Uri = Uri.parse(downloadFile.url)
+        val uri: Uri = Uri.parse(downloadLog.url)
         val request = DownloadManager.Request(uri)
-        request.setTitle(downloadFile.fileName)
+        request.setTitle(downloadLog.fileName)
         request.setDescription("Downloading")
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
 
         //location of the download
         val dir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!
-        val file = File(dir.absolutePath + "/" + downloadFile.fileName)
+        val file = File(dir.absolutePath + "/" + downloadLog.fileName)
         request.setDestinationUri(file.toUri())
 
         //start
-        downloadManager.enqueue(request)
+        val downloadId = downloadManager.enqueue(request)
+        return downloadId
     }
 
 

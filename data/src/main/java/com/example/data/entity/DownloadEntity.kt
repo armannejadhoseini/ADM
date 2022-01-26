@@ -11,6 +11,6 @@ data class DownloadEntity (
     var url: String,
     var time: String,
     var mimeType: String,
-    var progress: Int,
+    var downloadId: Long,
     var statusIsFinished: Boolean = false
         )

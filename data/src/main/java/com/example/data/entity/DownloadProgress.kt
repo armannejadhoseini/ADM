@@ -1,6 +1,6 @@
 package com.example.data.entity
 
-data class DownloadProgress(
+data class DownloadProgress (
     var fileName: String,
-    var progress: Int = 0
-)
+    var progress: Int
+        )

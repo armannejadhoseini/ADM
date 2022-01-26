@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.data.entity.DownloadEntity
 import com.example.myapplication.databinding.DownloadItemBinding
+import kotlinx.coroutines.flow.Flow
 
 class FinishedRecyclerView(
     val downloadEntity: List<DownloadEntity>

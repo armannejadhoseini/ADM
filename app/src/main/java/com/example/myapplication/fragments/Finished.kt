@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.adapters.FinishedRecyclerView
 import com.example.myapplication.databinding.FinishedBinding
 import com.example.myapplication.viewModels.FinishedViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class Finished : Fragment() {
@@ -33,13 +36,15 @@ class Finished : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //get livedata logs from db
-        viewModel.log.observe(viewLifecycleOwner, Observer {
-            //set adaptor for recyclerview
-            val recyclerView = binding.finishedRecyclerView
-            recyclerView.layoutManager = LinearLayoutManager(context)
-            recyclerView.adapter = FinishedRecyclerView(viewModel.log.value!!)
-        })
+        //set adaptor for recyclerview
+        val recyclerView = binding.finishedRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        //get the value of flow and pass to adapter
+        GlobalScope.launch(Dispatchers.Main) {
+            viewModel.log.collect {
+                recyclerView.adapter = FinishedRecyclerView(it)
+            }
+        }
 
     }
 

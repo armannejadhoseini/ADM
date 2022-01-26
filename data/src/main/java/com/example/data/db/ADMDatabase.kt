@@ -7,7 +7,7 @@ import com.example.data.entity.DownloadEntity
 
 @Database(
     entities = [DownloadEntity::class],
-    version = 3
+    version = 4
 )
 abstract class ADMDatabase: RoomDatabase() {
     abstract fun logDao(): LogDao
